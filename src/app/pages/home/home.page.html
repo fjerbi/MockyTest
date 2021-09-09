@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="translucent">
+    <ion-title> Liste des utilisateurs </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: empreinte"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed">
+    <ion-refresher-content
+      pullingIcon="arrow-down-outline"
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Important Friends -->
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-searchbar
+              placeholder="Search a user"
+              [(ngModel)]="filterTerm"
+              animated="true"
+            ></ion-searchbar>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- Friends -->
+      <ion-list lines="none">
+        <ion-item *ngFor="let user of users| filter:filterTerm">
+          <ion-label>
+            <ion-text>{{user.first}}</ion-text>
+            &nbsp;
+            <ion-text>{{user.last}}</ion-text>
+          </ion-label>
+          <ion-button
+         (click)="getUserDetails(user.id)" >Details
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

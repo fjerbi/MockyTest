@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>user-details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <li *ngFor="let userDetails of user">
+    {{userDetails.first}} {{userDetails.last}} {{userDetails.country}}
+    {{userDetails.company}} {{userDetails.email}}
+  </li>
+</ion-content>
